@@ -1,5 +1,6 @@
 /* eslint-disable import/namespace */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+
 
 import { View, TextInput } from "react-native";
 
@@ -12,12 +13,13 @@ interface ToDoItemProps {
     id: number;
     content: string;
     isCompleted: boolean;
-  };
+  },
+  onSubmit: () => void;
 }
 
-const ToDoItem = ({ todo }: ToDoItemProps) => {
+const ToDoItem = ({ todo, onSubmit }: ToDoItemProps) => {
   const [isChecked, setIsChecked] = useState(false);
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState("");
 
   useEffect(() => {
     if (!todo) {
@@ -27,6 +29,14 @@ const ToDoItem = ({ todo }: ToDoItemProps) => {
     setContent(todo.content);
   }, [todo]);
 
+  const input = useRef(null)
+  useEffect(() => {
+    //get focus on input element
+    if(input.current){
+      input?.current?.focus()
+    }
+
+  }, [input]);
   return (
     <View style={styles.toDoContainer}>
       {/* Checkbox Here */}
@@ -36,11 +46,16 @@ const ToDoItem = ({ todo }: ToDoItemProps) => {
       />
 
       {/* Text Input Here */}
-      
+
       <TextInput
+      ref={input} 
         value={content}
         onChangeText={setContent}
-       style={styles.textInput} multiline />
+        style={styles.textInput}
+        multiline
+        onSubmitEditing={onSubmit}
+        blurOnSubmit
+      />
     </View>
   );
 };

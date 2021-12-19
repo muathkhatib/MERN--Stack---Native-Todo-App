@@ -26,13 +26,26 @@ const TabOneScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => {
       isCompleted: true,
     },
   ]);
+  const createNewItem = (atIndex: number) => {
+    let id = todos.length + 1;
+    const newTodos = [...todos];
+    newTodos.splice(atIndex,0,{
+      id:id,
+      content: '',
+      isCompleted: false
+    })
+    setTodos(newTodos);
+  };
+  
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tab One</Text>
       {/* <ToDoItem /> */}
       <FlatList
         data={todos}
-        renderItem={({item}) => <ToDoItem todo={item} />}
+        renderItem={({ item, index }) => (
+          <ToDoItem todo={item} onSubmit={() => createNewItem(index++)}  />
+        )}
         style={styles.flatList}
       />
     </View>
