@@ -1,8 +1,7 @@
 /* eslint-disable import/namespace */
 import React, { useState, useEffect, useRef } from "react";
 
-
-import { View, TextInput } from "react-native";
+import { View, TextInput, KeyboardAvoidingView, Platform } from "react-native";
 
 import Checkbox from "../Checkbox";
 
@@ -13,7 +12,7 @@ interface ToDoItemProps {
     id: number;
     content: string;
     isCompleted: boolean;
-  },
+  };
   onSubmit: () => void;
 }
 
@@ -29,43 +28,48 @@ const ToDoItem = ({ todo, onSubmit }: ToDoItemProps) => {
     setContent(todo.content);
   }, [todo]);
 
-  const input = useRef(null)
+  const input = useRef(null);
   useEffect(() => {
     //get focus on input element
-    if(input.current){
-      input?.current?.focus()
+    if (input.current) {
+      input?.current?.focus();
     }
-
   }, [input]);
 
-  const onKeyPress = ({nativeEvent} : any) => {
+  const onKeyPress = ({ nativeEvent }: any) => {
     // Handle Backspace key with Empty content
-    if(nativeEvent.key === 'Backspace' && content === ''){
+    if (nativeEvent.key === "Backspace" && content === "") {
       /* Handle Delete here */
-      console.warn('Delete the item')
+      console.warn("Delete the item");
     }
-  }
+  };
   return (
-    <View style={styles.toDoContainer}>
-      {/* Checkbox Here */}
-      <Checkbox
-        isChecked={isChecked}
-        onPress={() => setIsChecked(!isChecked)}
-      />
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      keyboardVerticalOffset={Platform.OS === "ios" ? 130 : 0}
+      style={{ flex: 1 }}
+    >
+      <View style={styles.toDoContainer}>
+        {/* Checkbox Here */}
+        <Checkbox
+          isChecked={isChecked}
+          onPress={() => setIsChecked(!isChecked)}
+        />
 
-      {/* Text Input Here */}
+        {/* Text Input Here */}
 
-      <TextInput
-      ref={input} 
-        value={content}
-        onChangeText={setContent}
-        style={styles.textInput}
-        multiline
-        onSubmitEditing={onSubmit}
-        blurOnSubmit
-        onKeyPress={onKeyPress}
-      />
-    </View>
+        <TextInput
+          ref={input}
+          value={content}
+          onChangeText={setContent}
+          style={styles.textInput}
+          multiline
+          onSubmitEditing={onSubmit}
+          blurOnSubmit
+          onKeyPress={onKeyPress}
+        />
+      </View>
+    </KeyboardAvoidingView>
   );
 };
 
