@@ -1,8 +1,9 @@
 /* eslint-disable import/namespace */
 import React, { useState } from "react";
-import { FlatList,TextInput } from "react-native";
 
-import { Text, View } from "../components/Themed";
+import { FlatList,TextInput } from "react-native";
+import { View } from "../components/Themed";
+
 import { RootTabScreenProps } from "../types";
 import { ToDoItem } from "../components";
 

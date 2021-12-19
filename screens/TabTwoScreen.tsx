@@ -1,22 +1,43 @@
 /* eslint-disable import/namespace */
-import { StyleSheet } from 'react-native';
 
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
-import styles from './styles/TabTwoScreenScreen'
+import React, { useState } from "react";
 
+import { Text, View } from "../components/Themed";
 
+import { ProjectItem } from "../components";
 
-const  TabTwoScreen = () => {
+import styles from "./styles/TabTwoScreenScreen";
+import { FlatList } from "react-native";
+
+const TabTwoScreen = () => {
+  const [project, setProiect] = useState([
+    {
+      id: 1,
+      title: "Task One",
+      createdAt: "3h",
+    },
+    {
+      id: 2,
+      title: "Task Two",
+      createdAt: "1w",
+    },
+    {
+      id: 3,
+      title: "Task three",
+      createdAt: "2d",
+    },
+  ]);
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabTwoScreen.tsx" />
+      {/* List Of Tasks */}
+      <FlatList
+        data={project}
+        renderItem={({item})=> <ProjectItem project={item} />}
+        style={{width: '100%'}}
+      />
+      
     </View>
   );
-}
+};
 
-
-
-export default TabTwoScreen
+export default TabTwoScreen;
