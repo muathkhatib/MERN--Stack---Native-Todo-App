@@ -1,6 +1,6 @@
 /* eslint-disable import/namespace */
 import React, { useState } from "react";
-import { FlatList } from "react-native";
+import { FlatList,TextInput } from "react-native";
 
 import { Text, View } from "../components/Themed";
 import { RootTabScreenProps } from "../types";
@@ -9,6 +9,7 @@ import { ToDoItem } from "../components";
 import styles from "./styles/TabOneScreenStyle";
 
 const TabOneScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => {
+  const [title,setTitle] = useState('');
   const [todos, setTodos] = useState([
     {
       id: 1,
@@ -39,7 +40,12 @@ const TabOneScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => {
   
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
+      <TextInput
+      value={title}
+      onChangeText={setTitle}
+      placeholder="Title"
+       style={styles.title}
+       />
       {/* <ToDoItem /> */}
       <FlatList
         data={todos}

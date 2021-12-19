@@ -9,6 +9,10 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: "bold",
+    borderWidth:0.5,
+    width: "100%",
+    padding:4,
+    marginBottom:20
   },
   separator: {
     marginVertical: 30,
