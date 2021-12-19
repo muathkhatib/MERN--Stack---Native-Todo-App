@@ -37,6 +37,14 @@ const ToDoItem = ({ todo, onSubmit }: ToDoItemProps) => {
     }
 
   }, [input]);
+
+  const onKeyPress = ({nativeEvent} : any) => {
+    // Handle Backspace key with Empty content
+    if(nativeEvent.key === 'Backspace' && content === ''){
+      /* Handle Delete here */
+      console.warn('Delete the item')
+    }
+  }
   return (
     <View style={styles.toDoContainer}>
       {/* Checkbox Here */}
@@ -55,6 +63,7 @@ const ToDoItem = ({ todo, onSubmit }: ToDoItemProps) => {
         multiline
         onSubmitEditing={onSubmit}
         blurOnSubmit
+        onKeyPress={onKeyPress}
       />
     </View>
   );
