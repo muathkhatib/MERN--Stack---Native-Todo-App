@@ -1,4 +1,5 @@
 import Checkbox from './Checkbox';
 import ToDoItem from './ToDoItem';
+import ProjectItem from './ProjectItem';
 
-export {Checkbox, ToDoItem}
+export {Checkbox, ToDoItem,ProjectItem}
