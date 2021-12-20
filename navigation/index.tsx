@@ -1,7 +1,5 @@
 /* eslint-disable import/namespace */
 
-import { FontAwesome } from "@expo/vector-icons";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
   NavigationContainer,
   DefaultTheme,
@@ -15,6 +13,7 @@ import NotFoundScreen from "../screens/NotFoundScreen";
 import ToDoScreen from "../screens/ToDoScreen";
 import ProjectsScreen from "../screens/ProjectsScreen";
 import SignInScreen from "../screens/SignInScreen";
+import SignUpScreen from "../screens/SignUpScreen";
 
 import { RootStackParamList } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
@@ -30,6 +29,11 @@ var RootNavigator = () => {
         options={{
           title: "Sign In",
         }}
+      />
+      <Stack.Screen
+        name="SignUpScreen"
+        component={SignUpScreen}
+        options={{ title: "Sign up" }}
       />
       <Stack.Screen name="Home" component={ProjectsScreen} />
       <Stack.Screen name="ToDoScreen" component={ToDoScreen} />
