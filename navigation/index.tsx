@@ -14,6 +14,7 @@ import ToDoScreen from "../screens/ToDoScreen";
 import ProjectsScreen from "../screens/ProjectsScreen";
 import SignInScreen from "../screens/SignInScreen";
 import SignUpScreen from "../screens/SignUpScreen";
+import SplashScreen from "../screens/SplashScreen";
 
 import { RootStackParamList } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
@@ -23,6 +24,13 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 var RootNavigator = () => {
   return (
     <Stack.Navigator>
+      <Stack.Screen
+        name="SplashScreen"
+        component={SplashScreen}
+        options={{
+          title: "",
+        }}
+      />
       <Stack.Screen
         name="SignInScreen"
         component={SignInScreen}
