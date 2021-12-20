@@ -6,10 +6,10 @@ import { Text, View } from "../components/Themed";
 
 import { ProjectItem } from "../components";
 
-import styles from "./styles/TabTwoScreenScreen";
+import styles from "./styles/ProjectsScreenStyle";
 import { FlatList } from "react-native";
 
-const TabTwoScreen = () => {
+const ProjectsScreen = () => {
   const [project, setProiect] = useState([
     {
       id: 1,
@@ -40,4 +40,4 @@ const TabTwoScreen = () => {
   );
 };
 
-export default TabTwoScreen;
+export default ProjectsScreen;

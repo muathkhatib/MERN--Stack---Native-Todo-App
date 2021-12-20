@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "here",
-    "slug": "here",
+    "name": "MERN-stack-todo-app",
+    "slug": "MERN-stack-todo-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -29,6 +29,8 @@
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
-    }
+    },
+    "description": "",
+    "githubUrl": "https://github.com/muathkhatib/MERN-Stack-Native-Todo-App"
   }
 }
