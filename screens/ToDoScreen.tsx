@@ -7,9 +7,9 @@ import { View } from "../components/Themed";
 import { RootTabScreenProps } from "../types";
 import { ToDoItem } from "../components";
 
-import styles from "./styles/TabOneScreenStyle";
+import styles from "./styles/ToDoScreenStyle";
 
-const TabOneScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => {
+const ToDoScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => {
   const [title,setTitle] = useState('');
   const [todos, setTodos] = useState([
     {
@@ -58,4 +58,4 @@ const TabOneScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => {
     </View>
   );
 };
-export default TabOneScreen;
+export default ToDoScreen;
