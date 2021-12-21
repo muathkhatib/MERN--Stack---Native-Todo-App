@@ -10,7 +10,7 @@ const SplashScreen = () => {
   const navigation = useNavigation();
 
   const isAuthenticated = () => {
-    return true;
+    return false;
   };
 
   useEffect(() => {
